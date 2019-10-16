@@ -22,7 +22,6 @@ export default {
     async searchForJoke() {
       const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${this.query}`);
       const data = await response.json();
-      console.log('Click', data);
     }
   }
 }

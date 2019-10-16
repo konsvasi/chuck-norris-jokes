@@ -1,12 +1,17 @@
 <template>
   <div>
-    <p>Main view that will hold the categories and jokes.</p>
+    <categories></categories>
   </div>  
 </template>
 
 <script>
+import Categories from './Categories';
 export default {
   name: 'MainView',
+
+  components: {
+    Categories,
+  }
 }
 </script>
 
