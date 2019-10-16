@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <div>
-
-    </div>
+    <search-input></search-input>
     <router-view></router-view>
     <footer>
     
@@ -13,10 +11,12 @@
 
 <script>
 import Navbar from './components/Navbar';
+import SearchInput from './components/SearchInput';
 export default {
   name: 'app',
   components: {
-    Navbar
+    Navbar,
+    SearchInput,
   }
 }
 </script>
