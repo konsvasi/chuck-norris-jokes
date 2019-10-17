@@ -65,7 +65,7 @@ export default {
       }
 
       &:focus + button {
-        background-image: url('../assets/search-icon__black.svg');
+        background-image: url('../assets/icons/search-icon__black.svg');
         background-repeat: no-repeat;
         background-color: transparent;
         background-size: cover;
@@ -81,7 +81,7 @@ export default {
       position: absolute;
       top: 5px;
       right: 5px;
-      background-image: url('../assets/search-icon.svg');
+      background-image: url('../assets/icons/search-icon.svg');
       background-repeat: no-repeat;
       background-color: transparent;
       background-size: cover;

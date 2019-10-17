@@ -2,7 +2,7 @@
   <nav>
     <img src="../assets/logo-horizontal.svg" alt="Vehiculum logo"/>
     <img class="menu-toggle" 
-      src="../assets/menu.svg"
+      src="../assets/icons/menu.svg"
       @click="toggleMenu"
       alt="Menu icon" />
     <ul :class="[isMenuOpen ? 'mobile-menu' : 'desktop-navbar']">
