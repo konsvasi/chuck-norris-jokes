@@ -25,27 +25,22 @@
 </template>
 
 <script>
+import { store } from '../store';
 export default {
   name: 'SingleJoke',
 
-  data: function() {
-    return {
-      likes: 0,
-      dislikes: 0,
-    }
-  },
-
   props: [
+    'id',
     'category',
     'content',
   ],
 
   methods: {
     like(){
-      this.likes++; 
+      store.commit('like', this.id);
     },
     dislike() {
-      this.dislikes++;
+      store.commit('dislike', this.id);
     }
   },
   computed: {
@@ -74,6 +69,12 @@ export default {
           'joke__card__header__popularity--epic': this.likes > 100
         }
       }
+    },
+    likes() {
+      return store.getters.selectedJoke(this.id).likes;
+    },
+    dislikes() {
+      return store.getters.selectedJoke(this.id).dislikes;
     }
   }
 }

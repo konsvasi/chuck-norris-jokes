@@ -1,12 +1,16 @@
 <template>
-  <div class="jokes">
+  <div class="jokes" v-if="jokes.length">
     <div class="jokes__active_category">Category</div>
-    <joke-card v-for="joke in displayedJokes" :key="joke.id" :category="joke.categories" :content="joke.value" :id="joke.id"></joke-card>
-    <button class="jokes__button-more" @click="loadMore">View more<img class="jokes__button-more__arrow" src="../assets/icons/path-down.svg"/></button>
+    <joke-card v-for="joke in jokes" :key="joke.id" :category="joke.categories" :content="joke.value" :id="joke.id"></joke-card>
+    <button class="jokes__button-more" v-show="jokes.length >= 6" @click="loadMore">View more<img class="jokes__button-more__arrow" src="../assets/icons/path-down.svg"/></button>
+  </div>
+  <div v-else>
+    <p>Sorry, no jokes found</p>
   </div>
 </template>
 
 <script>
+import { store } from '../store';
 import JokeCard from './JokeCard';
 export default {
   name: 'Jokes',
@@ -15,27 +19,32 @@ export default {
     JokeCard,
   },
 
+  async created() {
+    if (store.state.initialJokes.length === 0) {
+      const response = await fetch('https://api.chucknorris.io/jokes/search?query=all');
+      const data = await response.json();
+      store.commit('initializeJokes', data.result);
+      store.commit('addJokes', data.result.slice(0, 6));
+      }
+  },
+
   data: function() {
     return {
-      jokes: [],
       displayedJokes: [],
     }
   },
 
   methods: {
     loadMore() {
-      const amountOfJokesToLoad = 5;
-      const tempArr = [...this.displayedJokes, ...this.jokes.slice(this.displayedJokes.length, this.displayedJokes.length + amountOfJokesToLoad)];
-      this.displayedJokes = tempArr;
+      store.commit('loadMoreJokes');
     }
   },
 
-  async created() {
-    const response = await fetch('https://api.chucknorris.io/jokes/search?query=all');
-    const data = await response.json();
-    this.jokes = data.result;
-    this.displayedJokes = this.jokes.slice(0, 6);
-  }
+  computed: {
+    jokes() {
+      return store.state.jokes;
+    }
+  },
 }
 </script>
 

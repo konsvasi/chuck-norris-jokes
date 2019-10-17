@@ -1,6 +1,6 @@
 <template>
   <div class="categories">
-    <div v-for="category in displayedCategories" class="categories__entry categories__entry--color" :key="category">
+    <div v-for="category in displayedCategories" class="categories__entry categories__entry--color" @click="selectCategory(category)" :key="category">
       <p>{{ category }}</p>
     </div>
     <button class="categories__showbutton" @click="viewAll" v-show="displayedCategories.length != categories.length">View all</button>
@@ -8,12 +8,14 @@
 </template>
 
 <script>
+import { store } from '../store';
 export default {
   name: 'Categories',
 
   async created() {
     const response = await fetch('https://api.chucknorris.io/jokes/categories');
     this.categories = await response.json();
+    this.categories.push('uncategorized');
     // Display the first five categories at the beginning
     this.displayedCategories = this.categories.slice(0, 5);
   },
@@ -28,6 +30,10 @@ export default {
   methods: {
     viewAll() {
       this.displayedCategories = [...this.displayedCategories, ...this.categories.slice(this.displayedCategories.length, this.categories.length)]
+    },
+    selectCategory(category) {
+      store.commit('selectCategory', category);
+      store.commit('filterJokes', category)
     }
   },
 }
