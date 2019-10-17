@@ -49,11 +49,15 @@ export default {
       grid-column: 1 / -1;
       border: 1px solid #d1bb91;
       background-color: transparent;
-      padding: 14px 0;
+      padding: 14px;
       color: #cfb995;
       font-size: 14px;
       font-weight: 600;
       border-radius: 2px;
+
+      &__arrow {
+        margin-left: 14px;
+      }
     }
 
     @media(min-width: 600px) {
@@ -65,11 +69,10 @@ export default {
       }
 
       &__button-more {
-        grid-column: 2;
         justify-self: center;
+        align-self: center;
         border: 1px solid #d1bb91;
         background-color: transparent;
-        padding: 14px 0;
         color: #cfb995;
         font-size: 14px;
         font-weight: 600;
