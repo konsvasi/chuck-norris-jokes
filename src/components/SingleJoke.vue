@@ -4,10 +4,6 @@
     <div class="joke__card">
       <div class="joke__card__header">
         <div class="joke__card__header__category">{{ category }}</div>
-        <!-- <div class="joke__card__header__popularity"
-         :class="popularityStyleObject">
-            {{ popularity }}
-          </div> -->
           <ul class="joke__card__header__popularity"
          :class="popularityStyleObject">
             <li>{{ popularity }}</li>
