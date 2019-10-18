@@ -1,6 +1,6 @@
 <template>
   <div class="jokes" v-if="jokes.length">
-    <div v-show="activeCategory.length" class="jokes__active-category">{{ activeCategory }}</div>
+    <div v-show="activeCategory.length" class="jokes__active-category" @click="deselect">{{ activeCategory }}</div>
     <joke-card v-for="joke in jokes" :key="joke.id" :category="joke.categories" :content="joke.value" :id="joke.id"></joke-card>
     <button class="jokes__button-more" v-show="jokes.length >= 6" @click="loadMore">View more<img class="jokes__button-more__arrow" src="../assets/icons/path-down.svg"/></button>
   </div>
@@ -29,13 +29,13 @@ export default {
       store.commit('addJokes', data.result.slice(0, 6));
     }
 
-    if (this.jokes.length === 1) {
+    if (this.jokes.length === 1 && this.activeCategory === '') {
       this.goToSingleJoke();
     }
   },
 
   updated() {
-    if (this.jokes.length === 1) {
+    if (this.jokes.length === 1 && this.activeCategory === '') {
       this.goToSingleJoke();
     }
   },
@@ -48,6 +48,9 @@ export default {
       const joke = this.jokes[0];
       joke.category = joke.categories.length === 0 ? 'Uncategorized' : joke.categories[0];
       this.$router.push({name: 'joke', params:{id: `${joke.id}`, category: `${joke.category}`, content: `${joke.value}`}})
+    },
+    deselect() {
+      store.commit('deselectCategory');
     }
   },
 
@@ -75,6 +78,11 @@ export default {
       padding: 3px;
       color: $white-two;
       text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $tea;
+      }
     }
     &__button-more {
       grid-column: 1 / -1;

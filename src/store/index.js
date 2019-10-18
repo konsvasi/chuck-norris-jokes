@@ -37,6 +37,10 @@ export const store = new Vuex.Store({
     resetJokes(state) {
       state.jokes = state.initialJokes;
     },
+    deselectCategory(state) {
+      state.selectedCategory = '';
+      state.jokes = state.initialJokes;
+    },
     loadMoreJokes(state) {
       const amountToAdd = 5
       let filteredJokes = [];
