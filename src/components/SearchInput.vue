@@ -4,7 +4,8 @@
       <input type="text" v-model="query" 
         placeholder="How can we make you laugh today?" 
         @keyup.enter="searchForJoke"
-        @input="test"
+        @input="resetJokes"
+        @blur="clearInput"
       />
       <button class="search-input__button" @click="searchForJoke"></button>
     </div>
@@ -27,10 +28,13 @@ export default {
     searchForJoke() {
       store.commit('findJoke', this.query);
     },
-    test() {
+    resetJokes() {
       if (this.query.length === 0) {
         store.commit('resetJokes');
       }
+    },
+    clearInput() {
+      this.query = '';
     }
   }
 }

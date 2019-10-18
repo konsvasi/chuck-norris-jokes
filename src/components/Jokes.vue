@@ -1,6 +1,6 @@
 <template>
   <div class="jokes" v-if="jokes.length">
-    <div class="jokes__active_category">Category</div>
+    <div v-show="activeCategory.length" class="jokes__active-category">{{ activeCategory }}</div>
     <joke-card v-for="joke in jokes" :key="joke.id" :category="joke.categories" :content="joke.value" :id="joke.id"></joke-card>
     <button class="jokes__button-more" v-show="jokes.length >= 6" @click="loadMore">View more<img class="jokes__button-more__arrow" src="../assets/icons/path-down.svg"/></button>
   </div>
@@ -33,12 +33,16 @@ export default {
   methods: {
     loadMore() {
       store.commit('loadMoreJokes');
-    }
+    },
   },
 
   computed: {
     jokes() {
       return store.state.jokes;
+    },
+    activeCategory() {
+      console.log(store.state.selectedCategory);
+      return store.state.selectedCategory;
     }
   },
 }
@@ -50,6 +54,14 @@ export default {
     grid-template-columns: 1fr;
     padding: 16px;
     
+    &__active-category {
+      background-color: $weird-green;
+      border-radius: 11px;
+      width: 120px;
+      padding: 3px;
+      color: $white-two;
+      text-align: center;
+    }
     &__button-more {
       grid-column: 1 / -1;
       border: 1px solid $link-border-color;
@@ -69,7 +81,7 @@ export default {
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 15px;
 
-      &__active_category {
+      &__active-category {
         grid-column: 1 / -1;
       }
 

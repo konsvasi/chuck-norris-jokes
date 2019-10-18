@@ -30,7 +30,9 @@ export default {
     display: grid;
     background-color: $white-two;
     grid-template-columns: 20px 1fr;
+    grid-template-rows: 45px 1fr 30px;
     align-items: center;
+    word-break: break-word;
     padding: 16px;
     border-radius: 2px;
     border: 1px solid $white-three;
@@ -48,6 +50,7 @@ export default {
 
     &__content {
       grid-column: 1 / -1;
+      align-self: start;
       font-size: 14px;
       margin: 0;
     }

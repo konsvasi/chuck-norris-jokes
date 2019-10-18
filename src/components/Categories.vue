@@ -58,7 +58,7 @@ export default {
 
     &__entry {
       border-radius: 2px;
-      color: white;
+      color: $white-two;
       text-align: center;
 
       // Assign color to each category element
