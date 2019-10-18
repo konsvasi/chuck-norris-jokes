@@ -1,7 +1,11 @@
 <template>
   <div class="search-input">
     <div class="search-input__container">
-      <input type="text" v-model="query" placeholder="How can we make you laugh today?"/>
+      <input type="text" v-model="query" 
+        placeholder="How can we make you laugh today?" 
+        @keyup.enter="searchForJoke"
+        @input="test"
+      />
       <button class="search-input__button" @click="searchForJoke"></button>
     </div>
 
@@ -9,6 +13,7 @@
 </template>
 
 <script>
+import { store } from '../store';
 export default {
   name: 'SearchInput',
   
@@ -19,9 +24,13 @@ export default {
   },
 
   methods: {
-    async searchForJoke() {
-      const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${this.query}`);
-      const data = await response.json();
+    searchForJoke() {
+      store.commit('findJoke', this.query);
+    },
+    test() {
+      if (this.query.length === 0) {
+        store.commit('resetJokes');
+      }
     }
   }
 }

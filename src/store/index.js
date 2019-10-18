@@ -31,6 +31,12 @@ export const store = new Vuex.Store({
     addJokes(state, jokesArray) {
       state.jokes = jokesArray;
     },
+    findJoke(state, query) {
+      state.jokes = state.initialJokes.filter(joke => joke.value.search(new RegExp(query, "i")) > 0);
+    },
+    resetJokes(state) {
+      state.jokes = state.initialJokes;
+    },
     loadMoreJokes(state) {
       const amountToAdd = 5
       let filteredJokes = [];

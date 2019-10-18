@@ -5,7 +5,9 @@
     <button class="jokes__button-more" v-show="jokes.length >= 6" @click="loadMore">View more<img class="jokes__button-more__arrow" src="../assets/icons/path-down.svg"/></button>
   </div>
   <div v-else>
-    <p>Sorry, no jokes found</p>
+    <div class="nojokes-message">
+      <h2>Sorry, no jokes found</h2>
+    </div>
   </div>
 </template>
 
@@ -26,12 +28,6 @@ export default {
       store.commit('initializeJokes', data.result);
       store.commit('addJokes', data.result.slice(0, 6));
       }
-  },
-
-  data: function() {
-    return {
-      displayedJokes: [],
-    }
   },
 
   methods: {
@@ -94,6 +90,11 @@ export default {
           vertical-align: middle;
         }
       }
+    }
+  }
+  .nojokes-message {
+    h2 {
+      text-align: center;
     }
   }
 </style>
