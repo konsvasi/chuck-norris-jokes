@@ -27,13 +27,28 @@ export default {
       const data = await response.json();
       store.commit('initializeJokes', data.result);
       store.commit('addJokes', data.result.slice(0, 6));
-      }
+    }
+
+    if (this.jokes.length === 1) {
+      this.goToSingleJoke();
+    }
+  },
+
+  updated() {
+    if (this.jokes.length === 1) {
+      this.goToSingleJoke();
+    }
   },
 
   methods: {
     loadMore() {
       store.commit('loadMoreJokes');
     },
+    goToSingleJoke() {
+      const joke = this.jokes[0];
+      joke.category = joke.categories.length === 0 ? 'Uncategorized' : joke.categories[0];
+      this.$router.push({name: 'joke', params:{id: `${joke.id}`, category: `${joke.category}`, content: `${joke.value}`}})
+    }
   },
 
   computed: {
@@ -41,7 +56,6 @@ export default {
       return store.state.jokes;
     },
     activeCategory() {
-      console.log(store.state.selectedCategory);
       return store.state.selectedCategory;
     }
   },

@@ -1,11 +1,10 @@
 <template>
   <div class="search-input">
-    <div class="search-input__container">
+    <div class="search-input__container" @blur="clearInput">
       <input type="text" v-model="query" 
         placeholder="How can we make you laugh today?" 
         @keyup.enter="searchForJoke"
         @input="resetJokes"
-        @blur="clearInput"
       />
       <button class="search-input__button" @click="searchForJoke"></button>
     </div>
@@ -27,6 +26,9 @@ export default {
   methods: {
     searchForJoke() {
       store.commit('findJoke', this.query);
+      if (this.$router.currentRoute.path !== '/') {
+        this.$router.push('/');
+      }
     },
     resetJokes() {
       if (this.query.length === 0) {
