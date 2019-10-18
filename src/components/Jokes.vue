@@ -6,7 +6,7 @@
   </div>
   <div v-else>
     <div class="nojokes-message">
-      <h2>Sorry, no jokes found</h2>
+      <h2>Sorry, no jokes found 😭</h2>
     </div>
   </div>
 </template>
@@ -52,10 +52,10 @@ export default {
     
     &__button-more {
       grid-column: 1 / -1;
-      border: 1px solid #d1bb91;
+      border: 1px solid $link-border-color;
       background-color: transparent;
       padding: 14px;
-      color: #cfb995;
+      color: $link-color;
       font-size: 14px;
       font-weight: 600;
       border-radius: 2px;
@@ -76,12 +76,6 @@ export default {
       &__button-more {
         justify-self: center;
         align-self: center;
-        border: 1px solid #d1bb91;
-        background-color: transparent;
-        color: #cfb995;
-        font-size: 14px;
-        font-weight: 600;
-        border-radius: 2px;
 
         &__arrow {
           width: 11px;

@@ -37,9 +37,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $input-color: #b2b2b2;
-  $input-color__focus: #000000;
-
   .search-input {
     display: flex;
     justify-content: center;
@@ -61,7 +58,7 @@ export default {
 
     input[type="text"] {
     border-radius: 4px;
-    border: solid 1px #fff;
+    border: solid 1px $white-two;
     background: transparent;
     padding: 5px;
     width: 100%;

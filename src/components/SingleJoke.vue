@@ -100,11 +100,11 @@ export default {
     }
 
     &__card {
-      background-color: white;
+      background-color: $white-two;
       padding: 24px 16px;
       border-radius: 4px;
-      border: 1px solid #ecebe9;
-      color: #313131;
+      border: 1px solid $white-three;
+      color: $black-two;
       margin-top: 15px;
 
       &__header {
@@ -121,15 +121,15 @@ export default {
           }
 
           &--new {
-            color: #36aef3;
+            color: $dodger-blue;
           }
 
           &--trending {
-            color: #f3a536
+            color: $macaroni-and-cheese
           }
 
           &--epic {
-            color: #f33636;
+            color: $tomato;
           }
         }
       }
@@ -158,19 +158,19 @@ export default {
           background-repeat: no-repeat;
 
           &--like {
-            background-color: #68b680;
+            background-color: $tea;
             background-image: url('../assets/icons/like.svg');
 
             &:hover {
-              background-color: #46915d;
+              background-color: $light-forest-green;
             }
           }
 
           &--dislike {
-            background-color: #ff3750;
+            background-color: $lightish-red;
             background-image: url('../assets/icons/dislike.svg');
             &:hover {
-              background-color: #ce2c40
+              background-color: $faded-red;
             }
           }
 
@@ -190,11 +190,6 @@ export default {
       &__card {
         grid-column: 2 / 5;
         grid-row: 2;
-        background-color: white;
-        padding: 24px 16px;
-        border-radius: 4px;
-        border: 1px solid #ecebe9;
-        color: #313131;
       }
 
       &__stats {

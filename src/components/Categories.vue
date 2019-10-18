@@ -40,14 +40,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/colors';
-
   $categoryColors:$my-red, $pastel-orange, $my-orange, $light-gold, $kiwi-green, $weird-green, $sea-blue;
   $categoryColorsLength: length($categoryColors);
 
   .categories {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 48px;
     grid-gap: 15px;
     padding: 16px;
@@ -59,7 +57,6 @@ export default {
     letter-spacing: normal;
 
     &__entry {
-      background-color: hotpink;
       border-radius: 2px;
       color: white;
       text-align: center;
@@ -77,7 +74,7 @@ export default {
     }
 
     &__showbutton {
-      border: 1px solid #cfb995;
+      border: 1px solid $link-color;
       background-color: transparent;
       color: $link-color;
       font-size: 14px;

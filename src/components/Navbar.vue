@@ -49,8 +49,8 @@ export default {
 
 <style lang="scss" scoped>
   nav {
-    background-color: #303030;
-    color: #ffffff;
+    background-color: $black-two;
+    color: $white-two;
     display: grid;
     grid-template-columns: 1fr 50px;
     padding: 16px 24px;
@@ -66,7 +66,7 @@ export default {
     .nav-links {
       margin-bottom: 20px;
       a {
-        color: #ffffff;
+        color: $white-two;
         text-decoration: none;
       }
     }

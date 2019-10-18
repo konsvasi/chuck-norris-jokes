@@ -28,12 +28,12 @@ export default {
 <style lang="scss" scoped>
   .joke-card {
     display: grid;
-    background-color: white;
+    background-color: $white-two;
     grid-template-columns: 20px 1fr;
     align-items: center;
     padding: 16px;
     border-radius: 2px;
-    border: 1px solid #ecebe9;
+    border: 1px solid $white-three;
     margin-bottom: 20px;
 
     &:hover {
